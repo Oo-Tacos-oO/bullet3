@@ -13,7 +13,7 @@ project "BulletCollision"
 	files {
 		"**.h",
 		"**.hpp",
-		"**.cpp"
+		"**.cpp",
 	}
 	removefiles {
 		"**.vs*/**"
@@ -23,15 +23,22 @@ project "BulletCollision"
 		".."
 	}
 
+	floatingpoint "Fast"
+
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
+		defines {
+			"_DEBUG=1",
+		}
 
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
+		vectorextensions "SSE2"
 
 	filter "configurations:Distribution"
 		runtime "Release"
 		optimize "on"
 		symbols "off"
+		vectorextensions "SSE2"
